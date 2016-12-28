@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>Examples</title>
+
+    <script type="text/javascript" src="js/react.js"></script>
+    <script type="text/javascript" src="js/react-dom.js"></script>
+    <script type="text/javascript" src="js/browser.min.js"></script>
+</head>
+<body>
+   <div id="box"></div>
+<script type="text/babel">
+ // var Box = React.createClass({
+ //       render : function () {
+ //           return React.DOM.h1(null,
+ //              "this is my frist react application",
+ //               React.DOM.br(),
+ //               React.DOM.hr(),
+ //               React.createElement("input",null,{defaultValue:"请输入用户名"}),
+ //               React.createElement("button",null,"submit")
+ //           )
+ //       }
+ //   });
+  var Box = React.createClass({
+             render : function(){
+                 return (
+                   <div>
+                      <h1>goodbye my sunshine</h1>
+                      <br/>
+                      <hr/>
+                      <input type='text' defaultValue='请输入用户名' />
+                      <button>submit</button>
+                   </div>
+                  )
+              }
+       });
+  ReactDOM.render(
+    <Box/>,
+    document.getElementById('box')
+  );
+</script>
+</body>
+</html>

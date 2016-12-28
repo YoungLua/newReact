@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="js/react.js"></script>
+    <script type="text/javascript" src="js/react-dom.js"></script>
+    <script type="text/javascript" src="js/browser.min.js"></script>
+    <title>Title</title>
+</head>
+<body>
+   <div id="box"></div>
+   <script type="text/babel">
+        var FromCom = React.createClass({
+            getInitialState:function(){
+                return{
+                    mark : true,
+                    count:0,
+                }
+            },
+            isHand :function(){
+                this.setState({
+                    count : this.state.count+1,
+                });
+            },
+            render : function () {
+               return(
+                   <div>
+                      <h2>点击下面的按钮</h2>
+                      <button onClick={this.isHand}>点击</button>
+                      <p>你一共点击了：{this.state.count}</p>
+                   </div>
+               )
+            }
+        });
+       ReactDOM.render(<FromCom/>,document.getElementById('box'));
+   </script>
+</body>
+</html>
