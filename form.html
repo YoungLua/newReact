@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="js/react.js"></script>
+    <script type="text/javascript" src="js/react-dom.js"></script>
+    <script type="text/javascript" src="js/browser.min.js"></script>
+    <title>Title</title>
+</head>
+<body>
+   <div id="box">
+   </div>
+   <script type="text/babel">
+       var FromApp = React.createClass({
+           getInitialState: function () {
+               return{
+                   inputValue:'input value',
+                   selectValue:'A',
+                   radioValue:'B',
+                   textareaValue:'some text here again...',
+               }
+           },
+           handleSubmit : function (e) {
+               e.preventDefault();//去掉默认行为,防止反复提交
+               console.log(e.target);
+           },
+           inputClick: function (e) {
+               console.log(e.target.value);
+               this.setState({
+                   inputValue : e.target.value,
+               });
+           },
+           render : function () {
+               return(
+                   <form onSubmit={this.handleSubmit}>
+                      <input type='text' defaultValue='default value'/><br/>
+                       <select defaultValue ={this.state.selectValue} >
+                           <option value='A'>A</option>
+                           <option value='B'>b</option>
+                           <option value='C'>C</option>
+                           <option value='D'>D</option>
+                           <option value='E'>E</option>
+                       </select>
+                       <br/>
+                       <input name='goodRadio' type='radio' value='A'onChange={this.inputClick}/>
+                       <input name='goodRadio' type='radio' defaultChecked value={this.state.radioValue}onChange={this.inputClick}/>
+                       <input name='goodRadio' type='radio' value='C' onChange={this.inputClick}/>
+                       <br/>
+                       A:<input name='goodRadio' type='checkbox' defaultValue='default value'value='A'/>
+                       B:<input name='goodRadio' type='checkbox' defaultValue='default value'defaultChecked value='B'/>
+                       C:<input name='goodRadio' type='checkbox' defaultValue='default value'value='C'/>
+                       <br/>
+                       <textarea defaultValue={this.state.textareaValue}></textarea>
+                       <br />
+                       <button type='submit'>提交</button>
+                   </form>
+               )
+           }
+       });
+       ReactDOM.render(<FromApp/>,document.getElementById('box'));
+       //使用value的值在没有提供 onChang事件的时候是不允许选择的， defaultValue的值可以选择，在没有onChang事件的情况下
+       //需要使用defaultChecked 选择的时候的radio不会变
+   </script>
+</body>
+</html>

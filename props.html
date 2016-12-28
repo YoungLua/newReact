@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <title>Title</title>
+</head>
+<body>
+   <div id="app"></div>
+   <script type="text/babel">
+       //父组件  他们简直传递值用props
+          var MesBox = React.createClass({
+              getInitialState : function () {
+                  return {
+                      mark : true,
+                      title :'你好美国，来自state的消息',
+                      subMes:[
+                          '我会代码搬砖',
+                          '以及花式搬砖',
+                          '哎呀，我得走了，工头催我了。。。。。'
+                      ]
+                  }
+              },
+              render : function () {
+                  //var styleObj = {display:this.state.mark ? 'block':'none'};
+                  return (
+                      <div>
+                         <h1>我是一点码农</h1>
+                         <SonBox message={this.state.subMes}/>
+                      </div>
+                  );
+              }
+          });
+       //子组件
+       var SonBox = React.createClass({
+           getDefaultProps : function () {//给定一个默认值，如果不传递 <SonBox
+               // message={this.state.subMes}这个值不传递的话，会用默认的值/>
+               return{
+                   message : ['来自系统默认的消息']//它会传递给上面的组件调用的地方
+               }
+           },
+           propTypes :{
+               message : React.PropTypes.array.required,
+           },
+           render : function () {
+               var msgs = [];
+               this.props.message.forEach(function (msg,index) {
+                   msgs.push(
+                      <p>码农说：{msg}</p>
+                   )
+               });
+               return(
+                   <div>
+                      {msgs}
+                   </div>
+               )
+           }
+       });
+       ReactDOM.render(<MesBox/>,document.getElementById('app'));
+   </script>
+</body>
+</html>
