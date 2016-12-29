@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <script type="text/javascript" src="js/react.js"></script>
+    <script type="text/javascript" src="js/react-dom.js"></script>
+    <script type="text/javascript" src="js/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="box"></div>
+    <script type="text/babel">
+       //this指向React.createClass创建出来的对象
+       //state负责数据的更新，一旦state发生改变，重新渲染dom
+       var Box = React.createClass({
+           getDefaultProps : function(){
+              return {
+                username : 'Young',
+                age : 27
+              }
+           },
+           getInitialSate : function(){
+              return {
+                  isHandsom : true
+              }
+           },
+           nothandsom : function(){
+              console.log("my first React application");
+              this.setState({//会进行组件的更新，dom重新渲染
+                  isHandsom : false
+              }); //方法一
+              //this.state.isHandsom = false;只能进行取值，设值不更新
+              //可以通过this.forUpdate();//会进行组件的更新，dom重新渲染
+           },
+           render : function(){
+              return (
+                 <div>
+                   <h1>handssom is YoungLua</h1>
+                   <p>username is {this.props.username}</p>
+                   <p>age is {this.props.age}</p>
+                   <p>{this.props.isHandsom ? '帅哥':'ugly'}</p>
+                   <button onClick={this.nothandsom}>点击</button>
+                   <button onClick={()=>alert(1)}>打印1</button>
+                 </div>
+              )
+           }
+       });
+       var box = ReactDOM.render(
+           <Box/>,
+           document.getElementById('box')
+       );
+       console.log(box);
+    </script>
+  </body>
+</html>

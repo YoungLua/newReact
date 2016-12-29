@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../js/react.js"></script>
+    <script type="text/javascript" src="../js/react-dom.js"></script>
+    <script type="text/javascript" src="../js/browser.min.js"></script>
+    <title>Formtest</title>
+</head>
+<body>
+<div id="box">
+</div>
+<script type="text/babel">
+    var FromApp = React.createClass({
+        getInitialState : function () {
+            return{
+                radioValue : "a",
+                selectValue:"b",
+                checkValue:'c',
+                textareaValue:'a again here',
+                inputValue:'d',
+            }
+        },
+        submitOn : function (e) {
+            e.preventDefault();
+            var value = ReactDOM.findDOMNode(this.refs["radioInput"]).value;
+            console.log(value);
+            var input = this.refs['radioInput'].getDOMNode();
+            console.log(input);
+        },
+
+        render : function () {
+            return(
+                    <form onSubmit={this.submitOn}>
+                    <input type="text" defaultValue={this.state.radioValue} />
+                    <br />
+                    <select defaultValue={this.state.selectValue}>
+                    <option defaultValue='A'>A</option>
+                    <option defaultValue='B'>B</option>
+                    <option defaultValue='C'>C</option>
+                    <option defaultValue='D'>D</option>
+                    <option defaultValue='E'>E</option>
+                    </select>
+                    <br/>
+                    a
+                    <input type='radio' ref="radioInput" name='goodRadio' defaultValue="A" defaultChecked />
+                    b
+                    <input type='radio'  ref="radioInput" name='goodRadio' defaultValue="b" />
+                    c
+                    <input type='radio' ref="radioInput" name='goodRadio' defaultValue="c" />
+                    <br />
+                    1
+                    <input type='checkbox'name='goodRadio' defaultValue={this.state.checkValue} />
+                    2
+                    <input type='checkbox'name='goodRadio' defaultValue={this.state.checkValue} />
+                    3
+                    <input type='checkbox'name='goodRadio' defaultValue={this.state.checkValue} />
+                    <br/>
+                    <textarea defaultValue={this.state.textareaValue}></textarea>
+                    <br/>
+                    <button type="submit">提交</button>
+                    </form>
+            )
+        },
+    });
+    ReactDOM.render(<FromApp/>,document.getElementById('box'));
+    //使用value的值在没有提供 onChang事件的时候是不允许选择的， defaultValue的值可以选择，在没有onChang事件的情况下
+    //需要使用defaultChecked 选择的时候的radio不会变
+</script>
+</body>
+</html>

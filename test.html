@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <script type="text/javascript" src="js/react.js"></script>
+    <script type="text/javascript" src="js/react-dom.js"></script>
+    <script type="text/javascript" src="js/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="box"></div>
+    <script type="text/babel">
+       // var Box = <div className="foo" />;
+       // ReactDOM.render(Box, document.getElementById('box'));
+       // var He = React.DOM.h1({'color':"red"},"skdfjklsj");
+       // ReactDOM.render(He,document.getElementById('box'));
+       // var Box = React.createClass({
+       //      //var sty = {color:'red'}
+       //      render : function(){
+       //         return React.DOM.h1(null,
+       //           "react create tag h1",
+       //           React.DOM.hr(),
+       //           React.DOM.br(),
+       //           React.createElement("input",{defaultValue:"请输入"}),
+       //           React.createElement("button",null,'submit')
+       //         );
+       //     }
+       // });
+       // ReactDOM.render(
+       //   <Box/>,
+       //   document.getElementById('box')
+       // );
+       // var Box = React.createClass({
+       //       render : function(){
+       //           return (
+       //             <div>
+       //                <h1>goodbye my sunshine</h1>
+       //                <br/>
+       //                <hr/>
+       //                <input type='text' defaultValue='请输入用户名' />
+       //                <button>submit</button>
+       //             </div>
+       //            )
+       //        }
+       // });
+       class Box extends React.Component{//继承react组件的特性
+            constructor(){//调用构造函数
+               super();//super()和java的一样
+            };
+            // getInitialSate(){//get都有返回值 set都是设值
+            //   return {
+            //      message :'Young'
+            //   }
+            // }
+            render(){
+               return (
+                   <h1>
+                      hello my first Component,ES6 version
+                      //{this.state.message}获取不到message里面的值
+                   </h1>
+                );
+            };
+       };
+       ReactDOM.render(<Box/>,document.getElementById('box'));
+    </script>
+  </body>
+</html>

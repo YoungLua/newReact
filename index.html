@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="box"></div>
+    <script type="text/babel">
+       // var box1 = React.DOM.h1({"color":"red"},"fdsfds");
+       // ReactDOM.render(
+       //   <box1 />, 如果是用大写的就正常了；
+       //   document.getElementById('box')
+       //  );创建了以box1的标签在#box里面
+      /*var Box = React.createClass({//定义一个组件
+           //var styleObj = {"background":'red'};
+           render : function(){
+               return React.DOM.h1(//基础创建元素的方法一
+                  {className:"myH1"},
+                  "Hello world...",
+                  React.createElement(
+                      'input',
+                      {defaultValue:'请输入用户名'}
+                    ),
+                  React.createElement(
+                      'button',
+                      {},
+                      'submit'
+                    )
+                );
+           }
+
+       });
+       ReactDOM.render(
+         <Box />,
+         document.getElementById('box')
+        );*/
+
+//jsx javascriptXml 是一个语法堂
+  /*var Box = React.createClass({
+        render:function(){
+           return(
+            <div>
+                <h1>hello world....</h1>
+                <br/>
+                <hr/>
+                <input type='text' defaultValue = "请输入用户名"/>
+                <button>submit</button>
+            </div>
+            );
+        }
+    });
+    ReactDOM.render(
+       <Box/>,
+       document.getElementById('box')
+    );*/
+    //var Box = React.createClass({//声明 定义一个组件
+    //   render : function(){ 固定的必须要有一个render方法
+    //      return();必须要返回一个元素
+    //      或者直接 返回 return <h1>sdfds</h1>
+    //   }
+    // });
+    var Box = React.createClass({
+        render : function(){
+            return <h1>唐剑剑VS金少华</h1>
+        }
+    });
+    ReactDOM.render(
+      <Box/>,
+      document.getElementById('box'),//放到哪个dom节点
+      function(){
+        console.log("做媒成功，两者匹配了。。。。")
+      }
+    );
+    </script>
+  </body>
+</html>

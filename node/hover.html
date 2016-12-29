@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        @charset "UTF-8";
+        /*css 初始化 */
+        html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img { margin:0; padding:0; }
+        fieldset, img,input,button { border:none; padding:0;margin:0;outline-style:none; }
+        ul, ol { list-style:none; }
+        input { padding-top:0; padding-bottom:0; font-family:"微软雅黑", "SimSun","宋体";}
+        select, input { vertical-align:middle;}
+        select, input, textarea { font-size:12px; margin:0; }
+        textarea { resize:none; } /*防止拖动*/
+        img {border:0;  vertical-align:middle; }  /*  去掉图片低测默认的3像素空白缝隙*/
+        table { border-collapse:collapse; }
+        body {
+            font:12px/150% Arial,Verdana,"\5b8b\4f53";
+            color:#666;
+            background:#eff3f5;
+            font-family:"微软雅黑",
+        }
+
+        .qf:before,.qf:after {
+            content:"";
+            display:table;
+        }
+        .qf:after{clear:both;}
+        .qf{
+            *zoom:1;/*IE/7/6*/
+        }
+        a {color:#666; text-decoration:none; }
+
+        h1,h4,h5,h6 {text-decoration:none;font-weight:normal;font-size:100%;}
+        s,i,em{font-style:normal;text-decoration:none;}
+        .col-red{color: #C81623!important;}
+
+        /*左浮动*/
+        .fl{float: left;}
+        .fr{float: right;}
+        /*列表下面的广告*/
+        .bg_white{background: white;}
+        .bg_white:after{content: "";display: block;clear: both;}
+        .wd_1180{width:1180px;height:400px;margin: 0 auto;}
+        .wd_1180 .wd_820{width: 820px;}
+        .wd_1180 .wd_820 .wd_one li{border-bottom: 1px solid #e0e7eb;position: relative;}
+        /*.wd_820 .wd_one li:after{content: "";display: table;}*/
+        .wd_820 .wd_one li a.me{display: block;padding: 10px 0;overflow: hidden;z-index: 2;}
+        .wd_820 .wd_one li .one{width:160px;}
+        .wd_820 .wd_one li .two{margin-left: 20px;width:640px;}
+
+        .wd_820 .smat{padding:5px;font-size: 16px; }
+        .wd_820 .wd_one li .two .smat{margin-top: 5px;}
+        .wd_820 .wd_one li .two .smat span:first-child{background:#3498db;border-radius: 3px;padding: 5px 10px; color:#fff;}
+        .wd_820 .two p{margin:15px 0 0 5px;}
+        .wd_820 .wd_one li .none{
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            left: -10px;
+            bottom: 0px;
+            opacity: 1;
+            background: #fff;
+            box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
+            z-index: 0;
+            transition: all 0.5s;
+            background: darkred;
+        }
+        .wd_820 .wd_one li:hover: .none{opacity: 1;border-color:#3498db; }
+        .wd_820 .wd_one li .one img{transition:transform 0.5s;}
+        .wd_820 .wd_one li:hover .one img{transform:scale(1.2);}
+        .wd_1180 .wd_280{width: 280px;height:400px;background: yellow;}
+    </style>
+</head>
+<body>
+<div class="bg_white">
+    <div class="wd_1180">
+        <div class="wd_820 fl">
+            <div class="wd_820_title">
+                <h3>
+                    <a href="#">推荐文章</a>
+                    <a href="#">最新文章</a>
+                </h3>
+            </div>
+
+            <ul class="wd_one">
+                <li class="">
+                    <div class="none"></div>
+
+                    <a href="javascript:;" class="me">
+                        <div class="one fl">
+                            <span><img src="images/820622.gif" height="120" width="160" /></span>
+                        </div>
+                        <div class="two fr">
+                            <h3 class="smat">
+                                <span>设计教程</span>
+                                <span>打造属于你自己的表情</span>
+                            </h3>
+                            <p class="cnt">关于微信表情制作的一些经验分享</p>
+                            <p class="num">
+                               <span>
+                                  <i><img src="images/111.png" height="20" width="20"></i>
+                                  <strong>LangDesign</strong>
+                               </span>
+                                <span>点击数</span>
+                                <span>收藏数</span>
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                <li class="">
+                    <div class="none"></div>
+                    <a href="javascript:;" class="me">
+                        <div class="one fl">
+                            <span><img src="images/820622.gif" height="120" width="160" /></span>
+                        </div>
+                        <div class="two fr">
+                            <h3 class="smat">
+                                <span>设计教程</span>
+                                <span>打造属于你自己的表情</span>
+                            </h3>
+                            <p class="cnt">关于微信表情制作的一些经验分享</p>
+                            <p class="num">
+                               <span>
+                                  <i><img src="images/111.png" height="20" width="20"></i>
+                                  <strong>LangDesign</strong>
+                               </span>
+                                <span>点击数</span>
+                                <span>收藏数</span>
+                            </p>
+                        </div>
+                    </a>
+                </li>
+
+    </div>
+</div>
+</body>
+</html>

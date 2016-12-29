@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../js/react.js"></script>
+    <script type="text/javascript" src="../js/react-dom.js"></script>
+    <script type="text/javascript" src="../js/browser.min.js"></script>
+    <title>不可控组件实例</title>
+</head>
+<body>
+   <div id="app"></div>
+   <script type="text/babel">
+       var Box = React.createClass({
+           getInitialState: function () {
+               return({
+                   inputValue :'可控组件的value'
+               })
+           },
+           handls: function (e) {
+               e.preventDefault();
+               console.log(e.target);
+               var hello = ReactDOM.findDOMNode(this.refs.hello).value;
+               alert(hello);
+           },
+            render : function () {
+                 return(
+                     <form onSubmit={this.handls}>
+                     <input type='text'
+                       ref='hello'
+                       defaultValue='hello world'/>
+                      <input type='text' defaultValue={this.state.inputValue} />
+                     <button type='submit'>点击</button>
+                    </form>
+                 )
+            }
+       });
+       ReactDOM.render(<Box/>,document.getElementById('app'));
+       //我们称直接使用defaultValue='hello world'写死的value为不可控组件
+       //defaultValue={this.state.inputValue}可控组件 值好获取 和state状态对应
+       //form 里面有2个input元素的时候能获取e.target
+   </script>
+</body>
+</html>

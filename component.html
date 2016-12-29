@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <script type="text/javascript" src="js/react.js"></script>
+    <script type="text/javascript" src="js/react-dom.js"></script>
+    <script type="text/javascript" src="js/browser.min.js"></script>
+</head>
+<body>
+<div id="box"></div>
+<script type="text/babel">
+//    var Box = React.createClass({
+//        render :function(){
+//           return (
+//                   <h1> Hello this is may first react application</h1>
+//           );
+//        }
+//    });方法一
+
+   class Box extends React.Component{
+       constructor(props) {//保证如期的初始化
+         super(props);//父亲的初始化；
+       };
+       getInitialState(){
+           return {
+               message : "in the yellowstart"
+           }
+       }
+       render(){
+           return (
+                   <h1> {this.state.message}Hello this is may first react application has EMACscript6 version</h1>
+           );
+       }
+   };
+    ReactDOM.render(<Box/>,document.getElementById('box'));
+</script>
+</body>
+</html>

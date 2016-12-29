@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学习react</title>
+    <script src="../js/react.js"></script>
+    <script src="../js/react-dom.js"></script>
+    <script src="../js/browser.min.js"></script>
+</head>
+<body>
+   <div id="box"></div>
+   <script type="text/babel">
+       var Box = React.createClass({
+           getInitialState: function () {
+               return{
+                   a:'来自state的消息',
+                   b:[
+                       '我是一个没天赋的码农',
+                           '但是我会搬砖啊',
+                           '也会吃饭睡觉和打豆豆'
+                   ],
+               }
+           },
+           getDefaultProps: function () {
+               return{
+                   mes : '我来props哦',
+               }
+           },
+           render : function () {
+               return(
+                       <div>
+                           <h1>你是我的小雅削苹果</h1>
+                           <Son />
+                       </div>
+               )
+           }
+       });
+       var Son = React.createClass({
+           propsTypes :{
+              message : React.PropTypes.array,
+           },
+           getDefaultProps: function () {
+               return{
+                   message:['默认的消息'],
+               }
+           },
+           render : function () {
+               var msgs = [];
+               this.props.message.map((a)=>{
+                    msgs.push(<p>{a}</p>);
+               });
+               return(
+                   <div>来自英格兰的消息{msgs}</div>
+               )
+           }
+       });
+       ReactDOM.render(<Box/>,document.getElementById('box'));
+   </script>
+</body>
+</html>

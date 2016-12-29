@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/react.js"></script>
+    <script type="text/javascript" src="js/react-dom.js"></script>
+    <script type="text/javascript" src="js/browser.min.js"></script>
+</head>
+<body>
+     <div id="test"></div>
+     <script type="text/babel">
+
+
+         var Box = React.createClass({
+             getDefaultProps : function(){//get开头的方法一般都是有返回值的
+                 return{
+                     name:'Young',
+                     age :22
+                 }
+             },
+             getInitialState:function(){
+                  return {
+                      isHandsome : true
+                  }
+             },
+             isHand : function(){
+                  this.setState({
+                          isHandsome :!this.state.isHandsome,
+                   });
+             },
+             render : function(){
+                  return(
+                     <div>
+                          <h1>this is may first React application arthor is {this.props.name}</h1>
+                          <p>age is {this.props.age}</p>
+                          <p>{this.state.isHandsome?'帅哥':'ugly'}</p>
+                          <button onClick={this.isHand}>灭灯</button>
+                     </div>
+                  );
+             }
+         });
+         ReactDOM.render(<Box/>,document.getElementById('test'))
+     </script>
+</body>
+</html>

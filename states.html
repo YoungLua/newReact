@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+</head>
+<body>
+   <div id="app"></div>
+   <script type="text/babel">
+       var Box = React.createClass({
+           getInitialState:function(){
+              return {
+                  Mark : false,//这个状态只能通过SteSate()方法来改变
+                  clickCount:0
+              }
+           },
+           hand : function () {
+               this.setState({
+                   clickCount : this.state.clickCount+1,
+               });
+               console.log(this.state.clickCount);
+           },
+           //不能直接this.state的值改变，如果非要这样要配合forceUpdate()方法，或者通过this.setState({})
+           render :function(){
+               return (
+                   <div>
+                       <p>state是React.createClass的状态，只能通过setState({})来改变</p>
+                       <p onClick={this.hand}>come on click me</p>
+                       <button >ClickCount:{this.state.clickCount}</button>
+                   </div>
+               );
+           }
+       });
+       ReactDOM.render(<Box/>,document.getElementById('app'));
+   </script>
+</body>
+</html>

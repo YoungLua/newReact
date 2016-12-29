@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../js/react.js"></script>
+    <script src="../js/react-dom.js"></script>
+    <script src="../js/browser.min.js"></script>
+    <title>Title</title>
+</head>
+<body>
+   <div id="box">
+
+   </div>
+   <script type="text/babel">
+       var Box = React.createClass({
+           getInitialState : function () {
+               return{
+                   mark : true,
+                   message :'来自state的消息',
+                   ButMes : [
+                           '我是一个码农',
+                           '我会花式搬砖',
+                           '不说了，工头来了,我得赶紧去搬砖了。。。',
+                   ],
+               }
+           },
+           isHand : function () {
+               this.setState({
+                  mark : !this.state.mark,
+               });
+           },
+           render : function () {
+               var styObj = {
+                   color:'red',
+                   display:this.state.mark ? 'block':'none',
+               };
+               return (
+                   <div>
+                       <button onClick={this.isHand}>点击隐藏和出现</button>
+                       <h1 style={styObj}>{this.state.message}</h1>
+                       <Son messages={this.state.ButMes}/>
+                   </div>
+               )
+           }
+       });
+       //this.state.xx 是当前的对象 getInitialState 的值 ，这个的状态改变只能使用this.setState()来改变，如果直接赋值，会不更新，如果直接赋值用forceUpdate()来强制更新，重新渲染dom；
+       var Son = React.createClass({
+           propTypes:{//这个对象是用来验证，组件之间传递值的时候，指定特定的类型，必须要传的值，
+              messages : React.PropTypes.array.required,//名字要和上面的一样 <Son messages={this.state.ButMes}/>
+           },
+           getDefaultProps :function(){//getDefaultProps
+               return {
+                   messages :['我是默认的消息'],//名字要和上面的一样 <Son messages={this.state.ButMes}/>
+                   //给定一个默认值，如果不传会用这个替代上面的；
+               }
+           },
+           render : function () {
+               var msgs = [];
+               this.props.messages.forEach((msg,i)=>{//接收父组件的值
+                   msgs.push(<p>码农的世界：{msg}</p>);
+               });
+               return(
+                   <div>{msgs}</div>
+               )
+           }
+       });
+
+
+       ReactDOM.render(<Box/>,document.getElementById('box'));
+   </script>
+</body>
+</html>
